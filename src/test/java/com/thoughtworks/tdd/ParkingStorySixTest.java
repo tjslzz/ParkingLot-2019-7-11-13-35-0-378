@@ -9,15 +9,27 @@ import java.util.List;
 public class ParkingStorySixTest {
 
     @Test
-    public void shout_return_car_when_call_fetch_given_hasTicket(){
+    public void shout_return_car_when_call_fetch_given_hasTicket_on_manager_choose_parkingBoy(){
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));
         List<ParkingBoy> parkingBoys = new ArrayList<>();
         parkingBoys.add(new ParkingBoy(parkingLots));
-        Manager manager = new Manager(parkingBoys);
+        Manager manager = new Manager(parkingLots,parkingBoys);
         Car car = new Car();
         Ticket ticket = manager.chooseParkingBoy(0).park(car);
         Car fetch = manager.chooseParkingBoy(0).fetch(ticket);
+
+        Assertions.assertSame(car,fetch);
+    }
+
+    @Test
+    public void shout_return_car_when_call_fetch_given_hasTicket_on_manager(){
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(10));
+        Manager manager = new Manager(parkingLots,new ArrayList<>());
+        Car car = new Car();
+        Ticket ticket = manager.park(car);
+        Car fetch = manager.fetch(ticket);
 
         Assertions.assertSame(car,fetch);
     }
