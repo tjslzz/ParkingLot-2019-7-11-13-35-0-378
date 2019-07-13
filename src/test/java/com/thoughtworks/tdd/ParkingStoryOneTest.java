@@ -7,9 +7,22 @@ public class ParkingStoryOneTest {
     @Test
     public void shout_return_car_when_call_fetch_given_hasTicket(){
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket ticket = parkingBoy.park(car);
         Car fetch = parkingBoy.fetch(ticket);
         Assertions.assertSame(car,fetch);
+    }
+
+    @Test
+    public void shout_return_car_when_call_fetch_given_correctTicket_with_manyCars(){
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket ticket1 = parkingBoy.park(car1);
+        Ticket ticket2 = parkingBoy.park(car2);
+        Car fetch = parkingBoy.fetch(ticket2);
+        Assertions.assertSame(car2,fetch);
     }
 }
