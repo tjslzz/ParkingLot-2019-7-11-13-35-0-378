@@ -23,6 +23,7 @@ public class ParkingLot {
                 return ticket;
             }
             else{
+                errorMessage = "Not enough position.";
                 return null;
             }
         }
