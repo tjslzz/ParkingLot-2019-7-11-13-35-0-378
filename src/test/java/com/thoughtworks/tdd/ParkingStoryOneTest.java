@@ -11,6 +11,7 @@ public class ParkingStoryOneTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket ticket = parkingBoy.park(car);
         Car fetch = parkingBoy.fetch(ticket);
+
         Assertions.assertSame(car,fetch);
     }
 
@@ -23,6 +24,7 @@ public class ParkingStoryOneTest {
         parkingBoy.park(car1);
         Ticket ticket2 = parkingBoy.park(car2);
         Car fetch = parkingBoy.fetch(ticket2);
+        
         Assertions.assertSame(car2,fetch);
     }
 
