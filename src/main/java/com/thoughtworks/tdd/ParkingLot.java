@@ -17,15 +17,9 @@ public class ParkingLot {
             return null;
         }
         else{
-            if(parkingLot.size()<capacity){
-                Ticket ticket = new Ticket();
-                parkingLot.put(ticket,car);
-                return ticket;
-            }
-            else{
-                errorMessage = "Not enough position.";
-                return null;
-            }
+            Ticket ticket = new Ticket();
+            parkingLot.put(ticket,car);
+            return ticket;
         }
     }
 
@@ -34,13 +28,22 @@ public class ParkingLot {
         if(car == null){
             errorMessage = "Unrecognized parking ticket.";
         }
-        if(ticket == null){
-            errorMessage = "Please provide your parking ticket.";
-        }
         return car;
     }
 
     public String getErrorMessage() {
         return errorMessage;
+    }
+
+    public Map<Ticket, Car> getParkingLot() {
+        return parkingLot;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
     }
 }
