@@ -7,27 +7,27 @@ public class ParkingLot {
     private Map<Ticket,Car> parkingLot = new HashMap<>();
     private Integer capacity;
     private String errorMessage;
+    private Integer empty;
 
     public ParkingLot(Integer capacity) {
         this.capacity = capacity;
+        this.empty = capacity;
     }
 
     public Ticket park(Car car){
-        if(parkingLot.containsValue(car) || car == null){
-            return null;
-        }
+        if(parkingLot.containsValue(car) || car == null) return null;
         else{
             Ticket ticket = new Ticket();
             parkingLot.put(ticket,car);
+            this.empty--;
             return ticket;
         }
     }
 
     public Car fetch(Ticket ticket){
         Car car = parkingLot.remove(ticket);
-        if(car == null){
-            errorMessage = "Unrecognized parking ticket.";
-        }
+        if(car == null)errorMessage = "Unrecognized parking ticket.";
+        else empty ++;
         return car;
     }
 
@@ -39,11 +39,11 @@ public class ParkingLot {
         return parkingLot;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
     public Integer getCapacity() {
         return capacity;
+    }
+
+    public Integer getEmpty() {
+        return empty;
     }
 }

@@ -11,12 +11,11 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car){
-        for(ParkingLot parkingLot : parkingLots){
-            if(parkingLot.getParkingLot().size() < parkingLot.getCapacity()){
-                Ticket ticket = parkingLot.park(car);
-                this.errorMessage = parkingLot.getErrorMessage();
-                return ticket;
-            }
+        ParkingLot parkingLot = parkingLots.stream().reduce((pre,cur)->pre.getEmpty() >= cur.getEmpty()?pre:cur).orElse(null);
+        if(parkingLot.getEmpty() > 0){
+            Ticket ticket = parkingLot.park(car);
+            this.errorMessage = parkingLot.getErrorMessage();
+            return ticket;
         }
         this.errorMessage = "Not enough position.";
         return null;
@@ -39,11 +38,11 @@ public class ParkingBoy {
         return null;
     }
 
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
-    }
-
     public String getErrorMessage() {
         return errorMessage;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
     }
 }
