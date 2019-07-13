@@ -37,7 +37,7 @@ public class ParkingLot {
         if(ticket == null){
             errorMessage = "Please provide your parking ticket.";
         }
-        return parkingLot.remove(ticket);
+        return car;
     }
 
     public String getErrorMessage() {

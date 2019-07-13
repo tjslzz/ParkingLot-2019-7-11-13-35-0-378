@@ -61,9 +61,7 @@ public class ParkingStoryOneTest {
     public void shout_return_null_when_call_fetch_given_hasTicket_whit_limited_Lot(){
         ParkingLot parkingLot = new ParkingLot(10);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        for (int i = 0; i < 10; i++) {
-            parkingBoy.park(new Car());
-        }
+        for (int i = 0; i < 10; i++) parkingBoy.park(new Car());
         Ticket ticket = parkingBoy.park(new Car());
 
         Assertions.assertSame(null,ticket);
