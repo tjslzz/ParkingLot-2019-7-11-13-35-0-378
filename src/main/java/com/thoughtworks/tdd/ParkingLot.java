@@ -38,4 +38,8 @@ public class ParkingLot {
     public Integer getEmpty() {
         return empty;
     }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
 }

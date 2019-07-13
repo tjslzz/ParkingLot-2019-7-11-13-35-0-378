@@ -11,7 +11,7 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car){
-        ParkingLot parkingLot = parkingLots.stream().reduce((pre,cur)->pre.getEmpty() >= cur.getEmpty()?pre:cur).orElse(null);
+        ParkingLot parkingLot = parkingLots.stream().reduce((pre,cur)->pre.getEmpty()/pre.getCapacity() >= cur.getEmpty()/cur.getCapacity()?pre:cur).orElse(null);
         if(parkingLot.getEmpty() > 0){
             Ticket ticket = parkingLot.park(car);
             this.errorMessage = parkingLot.getErrorMessage();
