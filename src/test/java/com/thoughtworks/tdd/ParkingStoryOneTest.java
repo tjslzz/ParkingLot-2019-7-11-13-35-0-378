@@ -20,7 +20,7 @@ public class ParkingStoryOneTest {
         Car car2 = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Ticket ticket1 = parkingBoy.park(car1);
+        parkingBoy.park(car1);
         Ticket ticket2 = parkingBoy.park(car2);
         Car fetch = parkingBoy.fetch(ticket2);
         Assertions.assertSame(car2,fetch);
@@ -32,12 +32,26 @@ public class ParkingStoryOneTest {
         Car car2 = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Ticket ticket1 = parkingBoy.park(car1);
-        Ticket ticket2 = parkingBoy.park(car2);
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
         Car fetch1 = parkingBoy.fetch(new Ticket());
         Car fetch2 = parkingBoy.fetch(null);
 
         Assertions.assertSame(null,fetch1);
         Assertions.assertSame(null,fetch2);
+    }
+
+    @Test
+    public void shout_return_null_when_call_fetch_given_usedTicket(){
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket ticket1 = parkingBoy.park(car1);
+        parkingBoy.park(car2);
+        parkingBoy.fetch(ticket1);
+        Car fetch = parkingBoy.fetch(ticket1);
+
+        Assertions.assertSame(null,fetch);
     }
 }
