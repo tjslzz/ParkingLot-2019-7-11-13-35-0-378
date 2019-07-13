@@ -7,7 +7,7 @@ public class ParkingStoryOneTest {
     @Test
     public void shout_return_car_when_call_fetch_given_hasTicket(){
         Car car = new Car();
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket ticket = parkingBoy.park(car);
         Car fetch = parkingBoy.fetch(ticket);
@@ -19,12 +19,12 @@ public class ParkingStoryOneTest {
     public void shout_return_car_when_call_fetch_given_correctTicket_with_manyCars(){
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(car1);
         Ticket ticket2 = parkingBoy.park(car2);
         Car fetch = parkingBoy.fetch(ticket2);
-        
+
         Assertions.assertSame(car2,fetch);
     }
 
@@ -32,7 +32,7 @@ public class ParkingStoryOneTest {
     public void shout_return_null_when_call_fetch_given_wrongTicket_or_NoTicket(){
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(car1);
         parkingBoy.park(car2);
@@ -47,7 +47,7 @@ public class ParkingStoryOneTest {
     public void shout_return_null_when_call_fetch_given_usedTicket(){
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket ticket1 = parkingBoy.park(car1);
         parkingBoy.park(car2);
@@ -55,5 +55,17 @@ public class ParkingStoryOneTest {
         Car fetch = parkingBoy.fetch(ticket1);
 
         Assertions.assertSame(null,fetch);
+    }
+
+    @Test
+    public void shout_return_null_when_call_fetch_given_hasTicket_whit_limited_Lot(){
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for (int i = 0; i < 10; i++) {
+            parkingBoy.park(new Car());
+        }
+        Ticket ticket = parkingBoy.park(new Car());
+
+        Assertions.assertSame(null,ticket);
     }
 }
