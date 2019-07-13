@@ -68,4 +68,17 @@ public class ParkingStoryOneTest {
 
         Assertions.assertSame(null,ticket);
     }
+
+    @Test
+    public void shout_return_null_when_call_fetch_given_nullCar_or_parkedCar(){
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        parkingBoy.park(car);
+        Ticket ticket1 = parkingBoy.park(car);
+        Ticket ticket2 = parkingBoy.park(null);
+
+        Assertions.assertSame(null,ticket1);
+        Assertions.assertSame(null,ticket2);
+    }
 }

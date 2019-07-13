@@ -12,13 +12,18 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car){
-        if(parkingLot.size()<capacity){
-            Ticket ticket = new Ticket();
-            parkingLot.put(ticket,car);
-            return ticket;
+        if(parkingLot.containsValue(car) || car == null){
+            return null;
         }
         else{
-            return null;
+            if(parkingLot.size()<capacity){
+                Ticket ticket = new Ticket();
+                parkingLot.put(ticket,car);
+                return ticket;
+            }
+            else{
+                return null;
+            }
         }
     }
 
