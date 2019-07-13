@@ -12,13 +12,13 @@ public class ParkingStoryFourTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));parkingLots.add(new ParkingLot(10));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        for (int i = 0; i < 15; i++) parkingBoy.park(new Car());
+        for (int i = 0; i < 10; i++) parkingBoy.park(new Car());
         Car car = new Car();
         Ticket ticket = parkingBoy.park(car);
 
-        Assertions.assertSame(2,parkingBoy.getParkingLots().get(1).getEmpty());
+        Assertions.assertSame(9,parkingBoy.getParkingLots().get(1).getEmpty());
         Car fetch = parkingBoy.fetch(ticket);
         Assertions.assertSame(car,fetch);
-        Assertions.assertSame(3,parkingBoy.getParkingLots().get(1).getEmpty());
+        Assertions.assertSame(9,parkingBoy.getParkingLots().get(1).getEmpty());
     }
 }
