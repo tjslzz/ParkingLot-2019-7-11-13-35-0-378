@@ -18,4 +18,12 @@ public class ParkingStoryTwoTest {
         Assertions.assertSame(null,fetch2);
         Assertions.assertEquals("Unrecognized parking ticket.",parkingBoy.getErrorMessage());
     }
+
+    @Test
+    public void shout_return_error_message_when_call_fetch_given_nullTicket(){
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        parkingBoy.fetch(null);
+        Assertions.assertEquals("Please provide your parking ticket.",parkingBoy.getErrorMessage());
+    }
 }

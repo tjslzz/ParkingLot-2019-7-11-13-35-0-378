@@ -13,5 +13,5 @@ public class ParkingBoy {
     public Car fetch(Ticket ticket){
         return parkingLot.fetch(ticket);
     }
-    public String getErrorMessage(){return "Unrecognized parking ticket.";}
+    public String getErrorMessage(){return parkingLot.getErrorMessage();}
 }
