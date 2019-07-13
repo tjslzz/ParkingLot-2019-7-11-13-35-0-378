@@ -35,14 +35,6 @@ public class ParkingLot {
         return errorMessage;
     }
 
-    public Map<Ticket, Car> getParkingLot() {
-        return parkingLot;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
     public Integer getEmpty() {
         return empty;
     }
