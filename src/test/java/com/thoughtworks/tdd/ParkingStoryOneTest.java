@@ -12,9 +12,9 @@ public class ParkingStoryOneTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        Ticket ticket = parkingBoy.park(car);
-        Car fetch = parkingBoy.fetch(ticket);
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
+        Ticket ticket = basicParkingBoy.park(car);
+        Car fetch = basicParkingBoy.fetch(ticket);
 
         Assertions.assertSame(car,fetch);
     }
@@ -25,10 +25,10 @@ public class ParkingStoryOneTest {
         parkingLots.add(new ParkingLot(10));
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.park(car1);
-        Ticket ticket2 = parkingBoy.park(car2);
-        Car fetch = parkingBoy.fetch(ticket2);
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
+        basicParkingBoy.park(car1);
+        Ticket ticket2 = basicParkingBoy.park(car2);
+        Car fetch = basicParkingBoy.fetch(ticket2);
 
         Assertions.assertSame(car2,fetch);
     }
@@ -39,11 +39,11 @@ public class ParkingStoryOneTest {
         parkingLots.add(new ParkingLot(10));
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.park(car1);
-        parkingBoy.park(car2);
-        Car fetch1 = parkingBoy.fetch(new Ticket());
-        Car fetch2 = parkingBoy.fetch(null);
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
+        basicParkingBoy.park(car1);
+        basicParkingBoy.park(car2);
+        Car fetch1 = basicParkingBoy.fetch(new Ticket());
+        Car fetch2 = basicParkingBoy.fetch(null);
 
         Assertions.assertSame(null,fetch1);
         Assertions.assertSame(null,fetch2);
@@ -55,11 +55,11 @@ public class ParkingStoryOneTest {
         parkingLots.add(new ParkingLot(10));
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        Ticket ticket1 = parkingBoy.park(car1);
-        parkingBoy.park(car2);
-        parkingBoy.fetch(ticket1);
-        Car fetch = parkingBoy.fetch(ticket1);
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
+        Ticket ticket1 = basicParkingBoy.park(car1);
+        basicParkingBoy.park(car2);
+        basicParkingBoy.fetch(ticket1);
+        Car fetch = basicParkingBoy.fetch(ticket1);
 
         Assertions.assertSame(null,fetch);
     }
@@ -68,9 +68,9 @@ public class ParkingStoryOneTest {
     public void shout_return_null_when_call_fetch_given_hasTicket_whit_limited_Lot(){
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        for (int i = 0; i < 10; i++) parkingBoy.park(new Car());
-        Ticket ticket = parkingBoy.park(new Car());
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
+        for (int i = 0; i < 10; i++) basicParkingBoy.park(new Car());
+        Ticket ticket = basicParkingBoy.park(new Car());
 
         Assertions.assertSame(null,ticket);
     }
@@ -79,11 +79,11 @@ public class ParkingStoryOneTest {
     public void shout_return_null_when_call_fetch_given_nullCar_or_parkedCar(){
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        BasicParkingBoy basicParkingBoy = new BasicParkingBoy(parkingLots);
         Car car = new Car();
-        parkingBoy.park(car);
-        Ticket ticket1 = parkingBoy.park(car);
-        Ticket ticket2 = parkingBoy.park(null);
+        basicParkingBoy.park(car);
+        Ticket ticket1 = basicParkingBoy.park(car);
+        Ticket ticket2 = basicParkingBoy.park(null);
 
         Assertions.assertSame(null,ticket1);
         Assertions.assertSame(null,ticket2);

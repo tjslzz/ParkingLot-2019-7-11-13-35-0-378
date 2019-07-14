@@ -9,10 +9,7 @@ public class ParkingLot {
     private String errorMessage;
     private Integer empty;
 
-    public ParkingLot(Integer capacity) {
-        this.capacity = capacity;
-        this.empty = capacity;
-    }
+    public ParkingLot(Integer capacity) { this.capacity = capacity;this.empty = capacity; }
 
     public Ticket park(Car car){
         if(parkingLot.containsValue(car) || car == null) return null;
@@ -39,7 +36,7 @@ public class ParkingLot {
         return empty;
     }
 
-    public Integer getCapacity() {
-        return capacity;
-    }
+    public Integer getCapacity() { return capacity; }
+
+    public Map<Ticket, Car> getParkingLot() { return parkingLot; }
 }

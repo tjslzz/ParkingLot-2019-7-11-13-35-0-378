@@ -12,9 +12,11 @@ public class ParkingStorySixTest {
     public void shout_return_car_when_call_fetch_given_hasTicket_on_manager_choose_parkingBoy(){
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(10));
-        List<ParkingBoy> parkingBoys = new ArrayList<>();
-        parkingBoys.add(new ParkingBoy(parkingLots));
-        Manager manager = new Manager(parkingLots,parkingBoys);
+        List<ParkingBoy> ParkingBoys = new ArrayList<>();
+        ParkingBoys.add(new BasicParkingBoy(parkingLots));
+        ParkingBoys.add(new SmartParkingBoy(parkingLots));
+        ParkingBoys.add(new SuperSmartParkingBoy(parkingLots));
+        Manager manager = new Manager(parkingLots, ParkingBoys);
         Car car = new Car();
         Ticket ticket = manager.chooseParkingBoy(0).park(car);
         Car fetch = manager.chooseParkingBoy(0).fetch(ticket);

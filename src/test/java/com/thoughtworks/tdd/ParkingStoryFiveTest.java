@@ -11,14 +11,14 @@ public class ParkingStoryFiveTest {
     public void shout_return_car_when_call_fetch_given_hasTicket_with_superSmartBoy(){
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(new ParkingLot(20));parkingLots.add(new ParkingLot(10));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        for (int i = 0; i < 15; i++) parkingBoy.park(new Car());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
+        for (int i = 0; i < 15; i++) superSmartParkingBoy.park(new Car());
         Car car = new Car();
-        Ticket ticket = parkingBoy.park(car);
+        Ticket ticket = superSmartParkingBoy.park(car);
 
-        Assertions.assertSame(9,parkingBoy.getParkingLots().get(1).getEmpty());
-        Car fetch = parkingBoy.fetch(ticket);
+        Assertions.assertSame(5, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
+        Car fetch = superSmartParkingBoy.fetch(ticket);
         Assertions.assertSame(car,fetch);
-        Assertions.assertSame(9,parkingBoy.getParkingLots().get(1).getEmpty());
+        Assertions.assertSame(6, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
     }
 }
