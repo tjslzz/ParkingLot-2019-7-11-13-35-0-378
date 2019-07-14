@@ -30,12 +30,11 @@ public abstract class ParkingBoy {
     public List<ParkingLot> getParkingLots() { return parkingLots; }
 
     public Ticket lotPark(ParkingLot parkingLot,Car car){
-        if(parkingLot.getEmpty() > 0){
+        try{
             Ticket ticket = parkingLot.park(car);
             this.errorMessage = parkingLot.getErrorMessage();
             return ticket;
         }
-        this.errorMessage = "Not enough position.";
-        return null;
+        catch (Exception e){ this.errorMessage = "Not enough position.";return null; }
     }
 }
