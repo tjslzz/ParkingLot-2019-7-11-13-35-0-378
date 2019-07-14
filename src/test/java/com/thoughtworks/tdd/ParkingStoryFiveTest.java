@@ -16,9 +16,9 @@ public class ParkingStoryFiveTest {
         Car car = new Car();
         Ticket ticket = superSmartParkingBoy.park(car);
 
-        Assertions.assertSame(5, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
+        Assertions.assertSame(9, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
         Car fetch = superSmartParkingBoy.fetch(ticket);
         Assertions.assertSame(car,fetch);
-        Assertions.assertSame(6, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
+        Assertions.assertSame(10, superSmartParkingBoy.getParkingLots().get(0).getEmpty());
     }
 }

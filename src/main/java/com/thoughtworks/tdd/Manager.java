@@ -10,4 +10,8 @@ public class Manager extends BasicParkingBoy {
     public ParkingBoy chooseParkingBoy(Integer index){
         return ParkingBoys.get(index);
     }
+
+    public ManagerThread  command(Ticket ticket,ParkingBoy parkingBoy){
+        return new ManagerThread(parkingBoy,ticket);
+    }
 }
